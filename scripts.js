@@ -5,7 +5,7 @@ var getArticles = function(term, number, startYear, endYear) {
   let end  = !endYear ? 2018 : endYear;
   
   $.get({
-    url: queryURL + '&q=' + term + '&begin_date=' + begin + '0101&end_date=' + end + '0101'
+    url: queryURL + '&q=' + term + '&begin_date=' + begin + '0101&end_date=' + end + '1212'
   })
     .then(function(response) {
       console.log(queryURL);
