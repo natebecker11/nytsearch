@@ -4,17 +4,21 @@ var queryURL = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=
 
 
 var getArticles = function(term, number, startYear, endYear) {
+  let begin = !startYear ? 1900 : startYear;
+  let end  = !endYear ? 2018 : endYear;
+  
   $.get({
-    url: queryURL + '&q=' + term
+    url: queryURL + '&q=' + term + '&begin_date=' + begin + '0101&end_date=' + end + '0101'
   })
     .then(function(response) {
-      console.log(response);
+      console.log(queryURL);
+      // console.log(response);
       var articleArray = response.response.docs;
       for (i = 0; i < number; i++) {
         var thisArticle = articleArray[i];
         var headline = thisArticle.headline.main;
         var articleLink = thisArticle.web_url;
-        console.log(headline + articleLink);
+        // console.log(headline + articleLink);
         var li = $('<li>');
         li.addClass('list-group-item')        
         var a = $('<a>');
@@ -26,11 +30,15 @@ var getArticles = function(term, number, startYear, endYear) {
 
 
 $(document).on('click', '#searchBtn', function() {
+  var startYear = $('#startYear').val().trim();
+  var endYear = $('#endYear').val().trim();
   var number = $('#numberRecordsRet').val();
   var term = $('#searchTermIn').val().trim();
   if (!term) return;
+  
   else {
     $('#articleBody').empty();
-    getArticles(term, number);
+    getArticles(term, number, startYear, endYear);
   }
 })
+
