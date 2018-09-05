@@ -1,7 +1,4 @@
-var apiKey = 'bd3af344ec534cf297eb0fd6922d272e';
 var queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=bd3af344ec534cf297eb0fd6922d272e'
-
-
 
 var getArticles = function(term, number, startYear, endYear) {
   let begin = !startYear ? 1900 : startYear;
@@ -28,7 +25,6 @@ var getArticles = function(term, number, startYear, endYear) {
     })
 }
 
-
 $(document).on('click', '#searchBtn', function() {
   var startYear = $('#startYear').val().trim();
   var endYear = $('#endYear').val().trim();
@@ -41,4 +37,6 @@ $(document).on('click', '#searchBtn', function() {
     getArticles(term, number, startYear, endYear);
   }
 })
-
+  .on('click', '#clearBtn', function() {
+    $('#articleBody').empty();
+  })
