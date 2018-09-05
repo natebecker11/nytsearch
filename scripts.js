@@ -1,5 +1,5 @@
 var apiKey = 'bd3af344ec534cf297eb0fd6922d272e';
-var queryURL = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=bd3af344ec534cf297eb0fd6922d272e'
+var queryURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=bd3af344ec534cf297eb0fd6922d272e'
 
 
 
